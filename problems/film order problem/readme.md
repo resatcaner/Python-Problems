@@ -11,19 +11,17 @@ Your task is to implement a program which will keep track of the position of eac
 particular, each time Mr. K. I. removes a movie box from the stack, your program should print the
 number of movies that were placed above it before it was removed.
 
-Input
+###Input
+n, [a1,a2,...am]
+- n (1 ≤ n): the number of movies in the stack 
 
-On the first line a positive integer: the number of test cases, at most 100. After that per test case:
-• one line with two integers n and m (1 ≤ n, m ≤ 100000): the number of movies in the stack and
-the number of locate requests.
-
-• one line with m integers a1, . . . , am (1 ≤ ai ≤ n) representing the identification numbers of movies
+- a1, . . . , am (1 ≤ ai ≤ n) representing the identification numbers of movies
 that Mr. K. I. wants to watch.
 
 For simplicity, assume the initial stack contains the movies with identification numbers 1, 2, . . . , n
 in increasing order, where the movie box with label 1 is the top-most box.
 
-Output
+###Output
 
 Per test case:
 
@@ -33,17 +31,7 @@ Note that after each locate request ai, the movie box with label ai is placed at
 
 Sample Input
 
-
-3 3
-
-3 1 1
-
-5 3
-
-4 4 5
-
-Sample Output
-
-2 1 0
-
-3 0 4
+| Input | Output |
+|:-------:|:---------:|
+| 3,[3,1,1] | [2,1,0] |
+|  5,[4,4,5]| [3,0,4]|

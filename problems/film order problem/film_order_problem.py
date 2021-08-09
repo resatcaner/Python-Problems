@@ -4,9 +4,6 @@ def initialize_stack(size):
     initial_stack = [{'film_id': i, 'order': i} for i in range(1, size + 1)]
     return initial_stack
 
-# BURADA ŞU mevzu varmış, direkt olarak o anda verilen filmin üstünde kaç film var diye soruyor.
-# Yani önce seçilen filmin üstüne bakıcaz,
-
 
 # this function gets the initial stack of movies and orders the stack according to the query.
 def watch_movies(initial_stack, query):
@@ -17,6 +14,7 @@ def watch_movies(initial_stack, query):
     for m in initial_stack:
         if m['film_id'] == query:
             split_index = array_index
+            order = m['order'] - 1
             dummy_list = [{'film_id': m['film_id'], 'order': 1}]
             initial_stack.pop(initial_stack.index(m))
         array_index += 1
@@ -29,18 +27,19 @@ def watch_movies(initial_stack, query):
                            'order': initial_stack[i]['order']})
     initial_stack = dummy_list.copy()
     dummy_list.clear()
-    return initial_stack
+    return initial_stack, order
 
 
 def get_final_list(size, movie_list):
-    initial_stack = initialize_stack(size)
+    stack = initialize_stack(size)
+    order = 0
+    results = []
     for i in movie_list:
-        initial_stack = watch_movies(initial_stack, i)
-    results=[v['film_id'] for v in initial_stack]
+        stack, order = watch_movies(stack, i)
+        results.append(order)
 
     return results
 
 
-print(get_final_list(5,[4, 4, 5]))
-
-test_array = [5, 3, [4, 4, 5]]
+print(get_final_list(5, [4, 4, 5]))
+print(get_final_list(3, [3, 1, 1]))
